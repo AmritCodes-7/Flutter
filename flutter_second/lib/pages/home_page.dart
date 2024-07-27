@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_second/components/post_item.dart';
 import 'package:flutter_second/styles/app_colors.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,26 +30,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _userItem() {
-    return Row(
-      children: [
-        Image.asset(
-          'assets/temp/glass.png',
-          height: 50,
-          width: 40,
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        const Text('Amrit Tamang'),
-      ],
-    );
-  }
-
   List<Widget> mockUserFromServer() {
     List<Widget> users = [];
     for (var i = 0; i < 20; i++) {
-      users.add(_userItem());
+      users.add(const PostItem());
     }
     return users;
   }

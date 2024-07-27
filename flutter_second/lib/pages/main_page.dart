@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_second/pages/home_page.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -8,31 +10,48 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int curr_index = 0;
+  int currIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Welcome to this app!! '),
-      ),
-      body: const Text('Hello'),
+      body: pages[currIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label: 'Favorite'),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: 'Add Post'),
+              icon: SvgPicture.asset('assets/svg/home.svg'), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/svg/heart.svg'),
+              label: 'Favorite'),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/svg/messages.svg'),
+              label: 'Messages'),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/svg/user.svg'), label: 'Users'),
         ],
-        currentIndex: curr_index,
+        currentIndex: currIndex,
         onTap: (index) {
           setState(() {
-            curr_index = index;
+            currIndex = index;
           });
         },
+        type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         backgroundColor: Colors.white,
       ),
     );
   }
+
+  final pages = [
+    const HomePage(),
+    const Center(
+      child: Text('Favourite'),
+    ),
+    const Center(
+      child: Text('Message'),
+    ),
+    const Center(
+      child: Text('User'),
+    ),
+  ];
 }

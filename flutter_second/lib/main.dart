@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.background,
         fontFamily: 'Urbanist',
+        brightness: Brightness.dark,
       ),
       initialRoute: '/',
       routes: {
